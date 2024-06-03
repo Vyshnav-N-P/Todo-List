@@ -1,0 +1,17 @@
+<div class="position-absolute d-flex w-100 h-100 me-5">
+  <div class="bg-warning-subtle w-100 mw-100 h-100 border-5 rounded-4">
+    <div class="bg-dark text-white p-4"><h3>LISTS</h3></div>
+    <div class="p-2">
+
+      <div *ngFor="let x of detail" class="list-item d-flex justify-content-between">
+        <p (click)="onListclick(x.name)" class="w-25">{{ x.name }}</p>
+        <app-editmodal (newName)="editList($event,x._id)"></app-editmodal>
+        <button class="btn bg-transapent" (click)="deleteList(x.name)"><i class="bi bi-trash fs-4"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div  class="position-absolute d-flex justify-content-around addbtn">
+  <app-list-form (sendData)="sendData($event)"></app-list-form>
+</div>

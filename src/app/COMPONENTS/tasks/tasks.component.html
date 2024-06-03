@@ -1,0 +1,42 @@
+<div class="position-absolute d-flex w-100 h-100 me-5">
+  <div class="bg-warning-subtle w-100 mw-100 border-5 rounded-4">
+    <div class="bg-dark text-white p-4">
+      <h3>{{ header }}</h3>
+    </div>
+    <div class="p-2">
+      <div>
+        <ol type="1" *ngFor="let item of tasks" class="fs-4">
+          <li class="d-flex justify-content-between">
+            <div class="w-25">
+              <p *ngIf="!isCompleted[tasks.indexOf(item)]; else elseblock">
+                {{ item }}
+              </p>
+              <ng-template #elseblock>
+                <del>{{ item }}</del>
+              </ng-template>
+            </div>
+
+            <input type="checkbox" class="btn btn-primary" [(ngModel)]="isCompleted[tasks.indexOf(item)]" (change)="completion(tasks.indexOf(item))"/>
+            <app-editmodal
+              [isTask]="isTask"
+              (newName)="editTask($event, tasks.indexOf(item))"
+            ></app-editmodal>
+            <button
+              class="btn bg-transparent"
+              (click)="deleteTask(tasks.indexOf(item))"
+            >
+              <i class="bi bi-trash fs-4"></i>
+            </button>
+          </li>
+          <hr />
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="position-absolute end-25 addbtn">
+  <app-list-form
+    [isTask]="isTask"
+    (sendData)="sendData($event)"
+  ></app-list-form>
+</div>

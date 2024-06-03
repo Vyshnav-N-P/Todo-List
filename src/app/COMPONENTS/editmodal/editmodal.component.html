@@ -1,0 +1,35 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{!isTask? "List update":"Task update"}}</h4>
+
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="input-group">
+          <input class="form-control" placeholder="List Name" name="name" [(ngModel)]="name" *ngIf="!isTask"/>
+          <input class="form-control" placeholder="Task Name" name="name" [(ngModel)]="name" *ngIf="isTask"/>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+
+<button class="btn bg-transparent" (click)="open(content)">
+  <i class="bi bi-pen fs-4"></i>
+</button>
