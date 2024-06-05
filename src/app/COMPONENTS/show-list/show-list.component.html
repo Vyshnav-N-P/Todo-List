@@ -4,7 +4,7 @@
     <div class="p-2">
 
       <div *ngFor="let x of detail" class="list-item d-flex justify-content-between">
-        <p (click)="onListclick(x.name)" class="w-25">{{ x.name }}</p>
+        <p (click)="onListClick(x.name)" class="w-25">{{ x.name }}</p>
         <app-editmodal (newName)="editList($event,x._id)"></app-editmodal>
         <button class="btn bg-transapent" (click)="deleteList(x.name)"><i class="bi bi-trash fs-4"></i></button>
       </div>

@@ -23,6 +23,7 @@ import { EditmodalComponent } from './COMPONENTS/editmodal/editmodal.component';
     EditmodalComponent,
   ],
   imports: [
+    BrowserModule,
     FormsModule,
     NgClass,
     NgIf,
